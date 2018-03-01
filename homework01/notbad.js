@@ -1,6 +1,7 @@
 notBad("This dinner is not that bad!");
 notBad("This dinner is not so bad!");
 notBad("This dinner is bad!");
+notBad("not bad Gustavo!");
 
 function notBad(string) {
 
