@@ -9,8 +9,7 @@ function pluralize(noun, number) {
             return number + " " + "geese"; 
         } else {
             return number + " " + noun + "s"; 
-        }
-        
+        }        
     }
 
 }
