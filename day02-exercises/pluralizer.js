@@ -1,19 +1,16 @@
 function pluralize(noun, number) {
 
-    if (noun == "goose") {
-        if (number == 1) {
-            return number + " " + noun; 
-        } else {
-            return number + " " + "geese"; 
-        }
-    } else if (noun == "sheep") {
-        return number + " " + "sheep"; 
+    if (number == 1) {
+        return number + " " + noun; 
     } else {
-        if (number == 1) {
-            return number + " " + noun; 
+        if (noun == "sheep") {
+            return number + " " + "sheep"; 
+        } else if (noun == "goose") {
+            return number + " " + "geese"; 
         } else {
             return number + " " + noun + "s"; 
         }
+        
     }
 
 }
