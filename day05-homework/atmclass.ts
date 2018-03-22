@@ -4,6 +4,8 @@ export class AtmClass implements AtmInterface {
 
     currentBalance: number;
 
+    constructor () {};
+
     setInitialBalance(arg: number): void {
         this.currentBalance = arg;
     }

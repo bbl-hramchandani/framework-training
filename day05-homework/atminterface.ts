@@ -1,5 +1,5 @@
 export interface AtmInterface {
-    currentBalance: number,
+    currentBalance : number,
     setInitialBalance(arg: number) : void,  
     viewBalance() : void, 
     deposit(arg: number) : void,

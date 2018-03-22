@@ -3,6 +3,7 @@ exports.__esModule = true;
 var AtmClass = /** @class */ (function () {
     function AtmClass() {
     }
+    ;
     AtmClass.prototype.setInitialBalance = function (arg) {
         this.currentBalance = arg;
     };
