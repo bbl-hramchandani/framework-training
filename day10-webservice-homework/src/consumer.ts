@@ -13,6 +13,9 @@ got.get('http://localhost:3000/atm').then (
             (data) => {
 
                 console.log('Data from web backend ' + data.body);
+                let result = JSON.parse(data.body);
+                console.log('Account ID is ' + result.account);
+                console.log('Balnace is ' + result.balance);
 
                 got.get('http://localhost:3000/atm/withdraw/123-456/amount/100').then (
 
