@@ -1,15 +1,12 @@
 import * as express from 'express';
-import { AtmDbClass } from "./AtmDbClass";
+import { Atm } from './atm/atm';
 
 class App {
     
-    public express;
-    public atm001;
+    public express = express();
+    public atm : Atm = new Atm();
 
     constructor() {
-        this.express = express();
-        this.atm001 = new AtmDbClass();
-        this.atm001.setInitialBalance(1000);
         this.mountRoutes();
     }
 
@@ -25,19 +22,17 @@ class App {
 
         pluto.get('/atm/:accountID', (req, resp) => {
             resp.setHeader('Access-Control-Allow-Origin', '*');
-            resp.json({account: req.params.accountID, balance: this.atm001.getBalance()})
+            resp.json({account: req.params.accountID, balance: this.atm.getCurrentBalance(req.params.accountID)})
         })
 
         pluto.get('/atm/withdraw/:accountID/amount/:amount', (req, resp) => {
-            this.atm001.withdraw(req.params.amount);
             resp.setHeader('Access-Control-Allow-Origin', '*');
-            resp.json({status: 0, message: "Ok", account: req.params.accountID, balance: this.atm001.getBalance()})
+            resp.json({status: 0, message: "Ok", account: req.params.accountID, balance: this.atm.withdraw(req.params.accountID, req.params.amount)})
         })
 
         pluto.get('/atm/deposit/:accountID/amount/:amount', (req, resp) => {
-            this.atm001.deposit(req.params.amount);
             resp.setHeader('Access-Control-Allow-Origin', '*');
-            resp.json({status: 0, message: "Ok", account: req.params.accountID, balance: this.atm001.getBalance()})
+            resp.json({status: 0, message: "Ok", account: req.params.accountID, balance: this.atm.deposit(req.params.accountID, req.params.amount)})
         })
 
         this.express.use('/', mickey);
