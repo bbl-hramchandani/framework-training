@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AtmComponent } from './atm/atm.component';
 import { AtmServiceService } from './services/atm-service.service';
 
 @Component({
@@ -11,17 +10,45 @@ import { AtmServiceService } from './services/atm-service.service';
 export class AppComponent {
 
   title;
-  accountBalance;
+  currentBalance;
   depositMoney;
   withdrawMoney;
+  transactions;
 
   constructor(public atmService: AtmServiceService) {
 
-    this.title = 'Hassaram';
-    this.accountBalance = atmService.getAccountBalance();
-    this.depositMoney = atmService.depositMoney();
-    this.withdrawMoney = atmService.withdrawMoney();
+    this.title = 'ATM Project';
+
+    atmService.getAccountBalance('23232-1').subscribe (value => {
+      console.log('account number field in balance request is ', value.accountNumber);
+      console.log('account balance field in balance request is ', value.currentBalance);
+      this.currentBalance = value.currentBalance;
+    });
+
+    atmService.depositMoney('23232-1').subscribe (value => {
+      console.log('account number field in deposit request is ', value.accountNumber);
+      console.log('account balance field in deposit request is ', value.currentBalance);
+      this.depositMoney = value.currentBalance;
+    });
+
+    atmService.withdrawMoney('23232-1').subscribe (value => {
+      console.log('account number field in withdraw request is ', value.accountNumber);
+      console.log('account balance field in withdraw request is ', value.currentBalance);
+      this.withdrawMoney = value.currentBalance;
+    });
+
+    atmService.getTransactions('23232-1').subscribe (value => {
+      console.log('account number field in withdraw request is ', value.accountNumber);
+      console.log('transactions field in withdraw request is ', value.transactions);
+      this.transactions = value.transactions;
+    });
 
   }
 
 }
+
+/*old code
+    this.depositMoney = atmService.depositMoney();
+    this.withdrawMoney = atmService.withdrawMoney();
+    this.currentBalance = atmService.getcurrentBalance();
+*/

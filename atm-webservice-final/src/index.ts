@@ -13,3 +13,4 @@ app.listen(port, (err) => {
 //http://localhost:3000/atm/123-456
 //http://localhost:3000/atm/withdraw/123-456/amount/100
 //http://localhost:3000/atm/deposit/123-456/amount/200
+//http://localhost:3000/transactions/123-456

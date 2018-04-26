@@ -1,52 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AtmTransactionResponseInterface } from '../interfaces/atm-transaction-response-interface';
+import { AtmTransactionListResponseInterface } from '../interfaces/atm-transaction-list-response-interface';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AtmServiceService {
 
   constructor(private http: HttpClient) { }
 
-  public getAccountBalance() {
+  public getAccountBalance(account: String): Observable <AtmTransactionResponseInterface> {
 
-    const promise = new Promise((resolve, reject) => {
-      this.http.get('http://localhost:3000/atm/123-1').toPromise().then(
-          res => {
-            console.log(res['balance']);
-            return res['balance'];
-          }
-        );
-    });
-
-    return 100.00;
+    return this.http.get<AtmTransactionResponseInterface>('http://localhost:3000/atm/' + account);
 
   }
 
-  public withdrawMoney() {
+  public withdrawMoney(account: String): Observable <AtmTransactionResponseInterface>  {
 
-    const promise = new Promise((resolve, reject) => {
-      this.http.get('http://localhost:3000/atm/withdraw/123-1/amount/100').toPromise().then(
-          res => {
-            console.log(res['balance']);
-            return res['balance'];
-          }
-        );
-    });
+    return this.http.get<AtmTransactionResponseInterface>('http://localhost:3000/atm/withdraw/' + account + '/amount/100');
 
-    return 300.00;
   }
 
-  public depositMoney() {
+  public depositMoney(account: String): Observable <AtmTransactionResponseInterface>  {
 
-    const promise = new Promise((resolve, reject) => {
-      this.http.get('http://localhost:3000/atm/deposit/123-1/amount/200').toPromise().then(
-          res => {
-            console.log(res['balance']);
-            return res['balance'];
-          }
-        );
-    });
+    return this.http.get<AtmTransactionResponseInterface>('http://localhost:3000/atm/deposit/' + account + '/amount/200');
 
-    return 400.00;
+  }
+
+  public getTransactions(account: String): Observable <AtmTransactionListResponseInterface>  {
+
+    return this.http.get<AtmTransactionListResponseInterface>('http://localhost:3000/atm/transactions/' + account);
+
   }
 
 }

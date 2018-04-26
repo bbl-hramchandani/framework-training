@@ -22,17 +22,25 @@ class App {
 
         pluto.get('/atm/:accountID', (req, resp) => {
             resp.setHeader('Access-Control-Allow-Origin', '*');
-            resp.json({account: req.params.accountID, balance: this.atm.getCurrentBalance(req.params.accountID)})
+            var balance = this.atm.getCurrentBalance(req.params.accountID);
+            resp.json({account: req.params.accountID, balance: balance})
         })
 
         pluto.get('/atm/withdraw/:accountID/amount/:amount', (req, resp) => {
             resp.setHeader('Access-Control-Allow-Origin', '*');
-            resp.json({status: 0, message: "Ok", account: req.params.accountID, balance: this.atm.withdraw(req.params.accountID, req.params.amount)})
+            var balance = this.atm.withdraw(req.params.accountID, req.params.amount);
+            resp.json({account: req.params.accountID, balance: balance})
         })
 
         pluto.get('/atm/deposit/:accountID/amount/:amount', (req, resp) => {
             resp.setHeader('Access-Control-Allow-Origin', '*');
-            resp.json({status: 0, message: "Ok", account: req.params.accountID, balance: this.atm.deposit(req.params.accountID, req.params.amount)})
+            var balance = this.atm.deposit(req.params.accountID, req.params.amount);
+            resp.json({account: req.params.accountID, balance: balance})
+        })
+
+        pluto.get('/atm/transactions/:accountID', (req, resp) => {
+            resp.setHeader('Access-Control-Allow-Origin', '*');
+            resp.json({account: req.params.accountID, transactions: this.atm.getAllTransactions(req.params.accountID)})
         })
 
         this.express.use('/', mickey);

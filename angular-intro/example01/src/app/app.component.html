@@ -1,10 +1,18 @@
 <div>
-  <h1>
-    Welcome {{ title }}!
-  </h1>
-  The balance is {{ accountBalance | currency }}
-  <br>
-  The withdraw money is {{ withdrawMoney |currency }}
-  <br>
-  The deposit money is {{ depositMoney |currency }}
+
+  <h1>Welcome To {{ title }}</h1>
+
+  The balance is {{ currentBalance | currency }}<br>
+
+  After depositing $200.00 the balance is {{ depositMoney |currency }}<br>
+
+  After withdrawing $100.00 the balance is {{ withdrawMoney |currency }}<br>
+
+  Transactions on account are
+  <ul>
+    <div *ngFor="let transaction of transactions">
+      <li>The details of the transaction are: {{transaction.accountNumber}}, {{transaction.dateOfTransaction}}, {{transaction.transactionType}}, {{transaction.amount |currency}}</li>
+    </div>
+  </ul>
+
 </div>
