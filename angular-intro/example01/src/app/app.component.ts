@@ -46,9 +46,3 @@ export class AppComponent {
   }
 
 }
-
-/*old code
-    this.depositMoney = atmService.depositMoney();
-    this.withdrawMoney = atmService.withdrawMoney();
-    this.currentBalance = atmService.getcurrentBalance();
-*/

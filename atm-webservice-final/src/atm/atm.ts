@@ -40,7 +40,7 @@ export class Atm implements AtmInterface {
             let txn = new TransactionModel();
             txn.accountNumber = acct;
             txn.amount  = amount;
-            txn.transactionType = "Withdraw";
+            txn.transactionType = "Withdrawal";
 
             this.transactionList.transactions.push(txn);
 
