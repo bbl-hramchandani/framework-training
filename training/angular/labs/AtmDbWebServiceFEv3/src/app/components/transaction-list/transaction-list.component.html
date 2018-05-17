@@ -1,3 +1,7 @@
+<button type="button" (click)="viewWithdrawals()">View Withdrawals</button>
+<button type="button" (click)="viewDeposits()">View Deposits</button>
+<button type="button" (click)="viewAll()">View All</button>
+
 <table class="table" *ngIf="showPanel()">
 
   <thead>
@@ -7,7 +11,7 @@
   </thead>
 
   <tbody>
-      <tr *ngFor="let item of atmTransactions.transactions">
+      <tr *ngFor="let item of (atmTransactions.transactions | transactionTypeFilter:transactionType )">
         <td>{{item.dateOfTransaction }} </td>
         <td>{{item.transactionType}}</td>
         <td>{{item.amount}}</td>

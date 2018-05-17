@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class TransactionListComponent implements OnInit {
 
   public atmTransactions  : AtmResponseTransactions = {} as AtmResponseTransactions;
+  public transactionType  : string;
 
-  constructor(public atmService : AtmServiceService,
-  public router : Router ) { }
+  constructor(public atmService : AtmServiceService, public router : Router ) { }
 
   ngOnInit() {
     
@@ -27,6 +27,8 @@ export class TransactionListComponent implements OnInit {
       this.getLastOperations(this.atmService.getAccountNumber());
     });
 
+    this.transactionType = 'All';
+
   }
 
   getLastOperations(acct:string) {
@@ -39,6 +41,19 @@ export class TransactionListComponent implements OnInit {
 
   showPanel(){
     return this.atmService.accountValid;
+  }
+
+  viewWithdrawals() {
+    this.transactionType = 'Withdrawal';
+  }
+
+  viewDeposits() {
+    this.transactionType = 'Deposit';
+
+  }
+
+  viewAll() {
+    this.transactionType = 'All';
   }
   
 }
