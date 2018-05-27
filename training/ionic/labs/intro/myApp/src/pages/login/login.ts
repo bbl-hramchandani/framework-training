@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, ToastController
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertController } from 'ionic-angular';
 import { AtmserviceProvider } from '../../providers/atmservice/atmservice';
+import { TabsPage }  from '../../pages/tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -25,7 +26,6 @@ export class LoginPage {
       pinNumber : new FormControl('', Validators.required)
     });
 
-
   }
 
   doLogin() {
@@ -43,14 +43,7 @@ export class LoginPage {
       (succ) => {
 
         loader.dismiss();
-
-        let myAlert = this.alertCtrl.create({
-          title: 'ATM Project',
-          subTitle: 'It worked',
-          buttons: ['Ok']
-        });
-    
-        myAlert.present();
+        this.navCtrl.push(TabsPage);
 
       },
       

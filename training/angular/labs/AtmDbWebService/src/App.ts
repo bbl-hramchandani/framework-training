@@ -10,6 +10,7 @@ export class App {
 
      private SUCCESS_MESSAGE        : object = { status :    0, message : "Success" };
      private ERROR_MESSAGE          : object = { status : -100, message : "Error"};
+     private INSUFFICIENT_FUNDS     : object = { status : -200, message : "Account Has Insufficient Funds"};
 
      constructor() {
 
