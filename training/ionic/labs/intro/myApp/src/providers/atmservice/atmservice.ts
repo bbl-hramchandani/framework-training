@@ -7,14 +7,14 @@ import { Subject }    from 'rxjs/Subject';
 @Injectable()
 export class AtmserviceProvider {
 
-  //private END_POINT = 'http://localhost:3000/atm';
-  private END_POINT = 'http://192.168.52.1:3000/atm';
+  private END_POINT = 'http://localhost:3000/atm';
+  //private END_POINT = 'http://192.168.9.154:3000/atm';
     
   public accountNumber : string;
   public accountName   : string;
   public currentBalance : number;
 
-  public  accountValid   : boolean;
+  public  accountValid   : boolean;Y
   public  token          : string;
 
   constructor( public http: HttpClient) {

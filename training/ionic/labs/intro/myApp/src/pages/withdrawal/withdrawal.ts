@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AtmserviceProvider } from '../../providers/atmservice/atmservice';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertController } from 'ionic-angular';
-
 @IonicPage()
 @Component({
   selector: 'page-withdrawal',
@@ -28,19 +27,33 @@ export class WithdrawalPage {
 
     let amount = this.myForm.get("amount").value;
 
-    this.atmService.withDraw(this.atmService.getAccountNumber(), amount).then( result => {
+    if (amount > this.atmService.getCurrentBalance(this.atmService.accountNumber)) {
 
-      let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
         title: 'ATM Project',
-        subTitle: 'Withdrawal was successful',
+        subTitle: 'Insufficient Funds Error',
         buttons: ['OK']
-      });
-      alert.present();
+      }).present();
 
-      this.myForm.reset();
+    } else {
 
-    });    
+      this.atmService.withDraw(this.atmService.getAccountNumber(), amount).then( result => {
 
+        let alert = this.alertCtrl.create({
+          title: 'ATM Project',
+          subTitle: 'Withdrawal was successful',
+          buttons: ['OK']
+        });
+        alert.present();
+  
+        this.myForm.reset();
+  
+      });    
+  
+      
+    }
+
+    
   }
 
   ionViewDidLoad() {
