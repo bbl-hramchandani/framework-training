@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    
+    <mat-icon>home</mat-icon>
+    <span> Application Module Title</span>
+ 
+    <span class="fill-remaining-space"></span>
+
+    <button mat-raised-button color="accent" (click)="openTheDialog()">Open Dialog</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="data" cdkFocusInitial>Send Back Data</button>
+   
+    <mat-icon>exit_to_app</mat-icon>
+
+  </mat-toolbar>
+
+<router-outlet></router-outlet>

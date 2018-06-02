@@ -1,0 +1,36 @@
+ 
+  
+  .login-content {
+    padding: 24px 42px 42px;
+
+    .mat-form-field {
+      width: 100%;
+    }
+
+    .extra-options {
+      margin: 16px 0 32px;
+      
+         .remember-me {
+              color: #777;
+           }
+    }
+  }
+
+  .login{
+    background: white;
+    height:100%;
+    margin-top: 100px;
+   }
+   
+   .login-header {
+    background: #31B93B;
+    color : #ffff;
+    padding: 12px;
+  }   
+
+  .login-form {
+    min-width: 450px;
+    max-width: 600px;
+   }
+  
+  
