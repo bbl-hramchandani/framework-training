@@ -1,0 +1,29 @@
+{
+  "name": "CalculatorDS",
+  "connector": "soap",
+  "url": "http://www.dneonline.com/calculator.asmx",
+  "wsdl": "http://www.dneonline.com/calculator.asmx?wsdl",
+  "remotingEnabled": true,
+  "operations": {
+    "Multiply": {
+      "service": "Calculator",
+      "port": "CalculatorSoap",
+      "operation": "Multiply"
+    },
+    "Add": {
+      "service": "Calculator",
+      "port": "CalculatorSoap",
+      "operation": "Add"
+    },
+    "Subtract": {
+      "service": "Calculator",
+      "port": "CalculatorSoap",
+      "operation": "Subtract"
+    },
+    "Divide": {
+      "service": "Calculator",
+      "port": "CalculatorSoap",
+      "operation": "Divide"
+    }
+  }
+}
